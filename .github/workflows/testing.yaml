@@ -28,7 +28,7 @@ jobs:
       - name: Linting
         run: npx eslint src/**/*.js --ignore-pattern 'App.test.js'
       
-      - name: if failure then send email
+      - name: On failure
       	if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v3
         with:
@@ -38,10 +38,10 @@ jobs:
 	  secure: true
 	  subject: Github Actions job result
 	  to: omer1720902@gmail.com
-	  from: ibnKhalid209@gmail.com
+	  from: ibnkhalid209@gmail.com
 	  body: The workflow failed.
 	    
-      - name: if failure then send email
+      - name: On success
       	if: ${{ success() }}
         uses: dawidd6/action-send-mail@v3
         with:
@@ -51,7 +51,7 @@ jobs:
 	  secure: true
 	  subject: Github Actions job result
 	  to: omer1720902@gmail.com
-	  from: ibnKhalid209@gmail.com
+	  from: ibnkhalid209@gmail.com
 	  body: The workflow is successful.
 	    
       - name: rsync deployments
